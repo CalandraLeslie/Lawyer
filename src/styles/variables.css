@@ -1,0 +1,8 @@
+:root {
+    --primary-color: #003366; /* Dark Blue */
+    --secondary-color: #006699; /* Light Blue */
+    --accent-color: #ffcc00; /* Gold */
+    --text-color: #333333; /* Dark Gray */
+    --background-color: #ffffff; /* White */
+    --hover-color: #005580; /* Darker Blue for hover effects */
+}

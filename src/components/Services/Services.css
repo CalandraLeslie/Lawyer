@@ -1,0 +1,148 @@
+.services {
+  padding: 120px 0;
+  background-color: #fff; /* Clean white background instead of light gray */
+  position: relative;
+  overflow: hidden;
+  color: var(--text-color);
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.services-shape {
+  position: absolute;
+  bottom: -200px;
+  left: -200px;
+  width: 500px;
+  height: 500px;
+  background-color: rgba(156, 175, 136, 0.05); /* More subtle background shape */
+  border-radius: 40% 60% 70% 30% / 40% 50% 50% 60%;
+  z-index: 1;
+}
+
+.services-container {
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+
+.services-container.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.services-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.services-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  color: var(--text);
+}
+
+.services-header h2 span {
+  color: var(--primary);
+}
+
+.services-header h2:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--accent);
+}
+
+.services-header p {
+  font-size: 1.1rem;
+  color: var(--text-light); /* Updated from gray */
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.service-card {
+  background-color: white;
+  border-radius: 8px; /* Less rounded corners */
+  padding: 40px 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border: 1px solid rgba(0, 0, 0, 0.05); /* Subtle border for refinement */
+}
+
+.service-card:hover,
+.service-card.active {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.service-icon {
+  width: 70px;
+  height: 70px;
+  background-color: rgba(75, 46, 131, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  font-size: 30px;
+  color: var(--primary);
+  transition: all 0.4s ease;
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--text);
+  transition: color 0.4s ease;
+}
+
+.service-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  color: var(--text-light); /* Changed from gray */
+  transition: color 0.4s ease;
+}
+
+/* Change hover style to be more subtle and professional */
+.service-card:hover {
+  border-bottom: 3px solid var(--accent);
+}
+
+.service-card:hover .service-icon {
+  background-color: var(--primary);
+  color: white;
+}
+
+.service-btn {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.service-btn:hover {
+  background-color: var(--primary);
+  color: white;
+}

@@ -1,0 +1,131 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: all 0.3s ease;
+  background-color: transparent;
+}
+
+.navbar a {
+  color: #ffffff; /* White text for links */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #ffcc00; /* Gold color on hover */
+}
+
+.navbar.scrolled {
+  background-color: var(--primary);
+  padding: 15px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.navbar-logo h1 {
+  color: var(--neutral);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.navbar-logo span {
+  color: var(--accent);
+}
+
+.navbar-menu {
+  display: flex;
+  list-style: none;
+}
+
+.navbar-menu li {
+  margin-left: 40px;
+}
+
+.navbar-menu li a {
+  color: var(--neutral);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar-menu li a:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent);
+  bottom: -5px;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.navbar-menu li a:hover,
+.navbar-menu li a.active {
+  color: var(--accent);
+}
+
+.navbar-menu li a:hover:after,
+.navbar-menu li a.active:after {
+  width: 100%;
+}
+
+.mobile-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.mobile-icon span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--neutral);
+  margin-bottom: 5px;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    opacity: 0;
+    transition: all 0.5s ease;
+    background-color: var(--primary);
+    padding: 20px;
+  }
+
+  .navbar-menu.active {
+    left: 0;
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .navbar-menu li {
+    margin: 15px 0;
+  }
+
+  .mobile-icon {
+    display: flex;
+  }
+}

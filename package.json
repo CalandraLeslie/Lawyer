@@ -2,21 +2,38 @@
   "name": "john-smith-law",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.2.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
+  "description": "A dynamic website for lawyer John Smith with animations and a smooth scrolling navbar.",
+  "main": "src/index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "react-scripts start"
+  },
+  "keywords": [
+    "lawyer",
+    "website",
+    "react",
+    "animations"
+  ],
+  "author": "John Smith",
+  "license": "MIT",
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "5.0.1",
+    "react-scroll": "^1.9.3",
+    "web-vitals": "^2.1.4"
+  },
+  "homepage": "http://example.com",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/username/john-smith-law.git"
   },
   "eslintConfig": {
     "extends": [

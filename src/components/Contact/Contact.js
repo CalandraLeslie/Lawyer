@@ -1,7 +1,23 @@
+// Contact section component with form handling and office information
+// Features form validation, submission handling, and contact details display
 import React, { useState, useEffect, useRef } from 'react';
 import './Contact.css';
 
+/**
+ * Contact Component - Contact form and office information section
+ * 
+ * Features:
+ * - Contact form with validation and submission handling
+ * - Office location, phone, and email information
+ * - Social media links
+ * - Intersection Observer animations
+ * - Form state management with success/error messages
+ * - Responsive two-column layout
+ * 
+ * @returns {JSX.Element} Contact section with form and office details
+ */
 const Contact = () => {
+  // State to manage form input values
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -10,14 +26,22 @@ const Contact = () => {
     message: ''
   });
   
+  // State to manage form submission status and messages
   const [formStatus, setFormStatus] = useState({
-    submitted: false,
-    error: false,
-    message: ''
+    submitted: false,  // Whether form has been submitted
+    error: false,      // Whether there was an error
+    message: ''        // Status message to display
   });
   
+  // Ref for targeting contact section for animations
   const contactRef = useRef(null);
   
+  /**
+   * Handles form input changes and updates state
+   * Uses computed property names to update the correct field
+   * 
+   * @param {Event} e - Input change event
+   */
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevData => ({
@@ -26,10 +50,17 @@ const Contact = () => {
     }));
   };
   
+  /**
+   * Handles form submission with validation
+   * Validates required fields and email format
+   * Simulates form submission with success message
+   * 
+   * @param {Event} e - Form submit event
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Form validation
+    // Validate required fields (name, email, message)
     if (!formData.name || !formData.email || !formData.message) {
       setFormStatus({
         submitted: true,
@@ -39,7 +70,7 @@ const Contact = () => {
       return;
     }
     
-    // Email validation
+    // Validate email format using regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       setFormStatus({
@@ -50,15 +81,17 @@ const Contact = () => {
       return;
     }
     
-    // In a real application, you would send the form data to a server
-    // For this example, we'll just simulate a successful submission
+    // Simulate form submission (in real app, this would send data to server)
+    // Using setTimeout to simulate async operation
     setTimeout(() => {
+      // Set success status and message
       setFormStatus({
         submitted: true,
         error: false,
         message: 'Thank you for your message! We will contact you shortly.'
       });
       
+      // Reset form data after successful submission
       setFormData({
         name: '',
         email: '',
@@ -67,7 +100,7 @@ const Contact = () => {
         message: ''
       });
       
-      // Reset form status after 5 seconds
+      // Auto-hide status message after 5 seconds
       setTimeout(() => {
         setFormStatus({
           submitted: false,
@@ -75,23 +108,31 @@ const Contact = () => {
           message: ''
         });
       }, 5000);
-    }, 1000);
+    }, 1000); // 1 second delay to simulate processing
   };
   
+  // Effect to set up intersection observer for scroll animations
   useEffect(() => {
+    /**
+     * Intersection Observer to trigger animations when contact section enters viewport
+     * Uses threshold of 0.1 (10% visibility) to trigger animation
+     */
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          // Add animation class when section becomes visible
           entry.target.classList.add('animate');
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 } // Trigger when 10% of element is visible
     );
     
+    // Start observing the contact section if it exists
     if (contactRef.current) {
       observer.observe(contactRef.current);
     }
     
+    // Cleanup function to stop observing when component unmounts
     return () => {
       if (contactRef.current) {
         observer.unobserve(contactRef.current);
@@ -101,13 +142,20 @@ const Contact = () => {
   
   return (
     <section id="contact" className="contact">
+      {/* Decorative background shape */}
       <div className="contact-shape"></div>
+      
+      {/* Main contact container with animation ref */}
       <div className="container contact-container" ref={contactRef}>
+        {/* Contact information section */}
         <div className="contact-info">
+          {/* Section heading */}
           <h2>Get in <span>Touch</span></h2>
           <p>Ready to discuss your legal needs? Contact us for a free consultation.</p>
           
+          {/* Contact details with icons */}
           <div className="info-items">
+            {/* Office address */}
             <div className="info-item">
               <div className="info-icon">
                 <i className="fas fa-map-marker-alt"></i>
@@ -118,6 +166,7 @@ const Contact = () => {
               </div>
             </div>
             
+            {/* Phone number and hours */}
             <div className="info-item">
               <div className="info-icon">
                 <i className="fas fa-phone-alt"></i>
@@ -128,6 +177,7 @@ const Contact = () => {
               </div>
             </div>
             
+            {/* Email addresses */}
             <div className="info-item">
               <div className="info-icon">
                 <i className="fas fa-envelope"></i>
@@ -139,6 +189,7 @@ const Contact = () => {
             </div>
           </div>
           
+          {/* Social media links */}
           <div className="social-links">
             <a href="#" className="social-link">
               <i className="fab fa-linkedin-in"></i>
@@ -152,17 +203,21 @@ const Contact = () => {
           </div>
         </div>
         
+        {/* Contact form section */}
         <div className="contact-form">
           <div className="form-container">
             <h3>Free Consultation</h3>
             
+            {/* Form status message (success or error) */}
             {formStatus.submitted && (
               <div className={`form-message ${formStatus.error ? 'error' : 'success'}`}>
                 {formStatus.message}
               </div>
             )}
             
+            {/* Contact form */}
             <form onSubmit={handleSubmit}>
+              {/* Name input (required) */}
               <div className="form-group">
                 <input 
                   type="text" 
@@ -174,6 +229,7 @@ const Contact = () => {
                 />
               </div>
               
+              {/* Email input (required) */}
               <div className="form-group">
                 <input 
                   type="email" 
@@ -185,6 +241,7 @@ const Contact = () => {
                 />
               </div>
               
+              {/* Phone input (optional) */}
               <div className="form-group">
                 <input 
                   type="tel" 
@@ -195,6 +252,7 @@ const Contact = () => {
                 />
               </div>
               
+              {/* Service selection dropdown */}
               <div className="form-group">
                 <select 
                   name="service" 
@@ -211,6 +269,7 @@ const Contact = () => {
                 </select>
               </div>
               
+              {/* Message textarea (required) */}
               <div className="form-group">
                 <textarea 
                   name="message" 
@@ -221,6 +280,7 @@ const Contact = () => {
                 ></textarea>
               </div>
               
+              {/* Submit button */}
               <button type="submit" className="submit-btn">Send Message</button>
             </form>
           </div>
